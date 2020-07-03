@@ -1,4 +1,4 @@
-package com.hardcoregeek.demo.entity
+package com.hardcoregeek.demo.entity;
 
 
 public class Member {
@@ -8,7 +8,7 @@ public class Member {
 
     public Member() {};
 
-    public Member(int id, String name, String) {
+    public Member(int id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,6 +25,7 @@ public class Member {
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
