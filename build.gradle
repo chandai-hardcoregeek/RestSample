@@ -18,7 +18,7 @@ configurations {
 
 sonarqube {
 	properties {
-		property "sonar.projectKey", "hardcoregeek_RestSample"
+		property "sonar.projectKey", "chandai-hardcoregeek_RestSample"
 	}
 }
 
@@ -44,4 +44,8 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+tasks.withType(JavaCompile) {
+	options.compilerArgs << '-Xlint:unchecked'
+	options.deprecation = true
 }
