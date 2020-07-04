@@ -14,42 +14,22 @@ public class SurveyForm {
     public SurveyForm() {
     }
 
-    ;
-
     public SurveyForm(int age, int satisfaction, String comment) {
         this.age = age;
         this.satisfaction = satisfaction;
         this.comment = comment;
     }
 
-
     public int getAge() {
-        return age;
+        return this.age;
     }
-
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
 
     public int getSatisfaction() {
-        return satisfaction;
+        return this.satisfaction;
     }
-
-
-    public void setSatisfaction(int satisfaction) {
-        this.satisfaction = satisfaction;
-    }
-
 
     public String getComment() {
-        return comment;
-    }
-
-
-    public void setComment(String comment) {
-        this.comment = comment;
+        return this.comment;
     }
 
 }

@@ -18,10 +18,10 @@ before_install:
 addons:
   sonarcloud:
     organization: "chandai-hardcoregeek"
-    token: ${SONAR_TOKEN}
+    token: $SONAR_TOKEN
 script:
   - gradle jacocoTestReport
-  - gradle sonarqube -Dsonar.login=$SONAR_TOKEN
+  - gradle sonarqube -Dsonar.login=$SONAR_TOKEN -Dsonar.coverage.exclusions=RestSample/src/*
 
 cache:
   directories:
