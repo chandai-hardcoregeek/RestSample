@@ -6,6 +6,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MemberServiceImpl implements MemberService {
+    private static final MemberServiceImpl singleton = new MemberServiceImpl();
+
+    private MemberServiceImpl(){}
+
+    public static MemberServiceImpl getInstance() {
+        return singleton;
+    }
     @Override
     public String greet(int i) {
         String[] greetings = {"Good Morning", "Hello", "Good evening"};
