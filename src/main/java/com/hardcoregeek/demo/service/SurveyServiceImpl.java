@@ -10,24 +10,24 @@ import com.hardcoregeek.demo.repository.SurveyDao;
 @Service
 public class SurveyServiceImpl implements SurveyService {
 
-    private final SurveyDao dao;
+  private final SurveyDao dao;
 
-    @Autowired
-    SurveyServiceImpl(SurveyDao dao) {
-        this.dao = dao;
-    }
+  @Autowired
+  SurveyServiceImpl(SurveyDao dao) {
+    this.dao = dao;
+  }
 
-    @Override
-    public void save(Survey survey) {
-        //hands-on
-    }
+  @Override
+  public void save(Survey survey) {
+    //hands-on
+  }
 
-    @Override
-    public List<Survey> getAll() {
-        if (dao.getAll().isEmpty()) {
-            throw new InquiryNotFoundException("SQL error");
-        }
-        return dao.getAll();
+  @Override
+  public List<Survey> getAll() {
+    if (dao.getAll().isEmpty()) {
+      throw new InquiryNotFoundException("SQL error");
     }
+    return dao.getAll();
+  }
 
 }

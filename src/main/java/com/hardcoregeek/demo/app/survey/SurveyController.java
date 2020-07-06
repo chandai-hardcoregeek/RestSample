@@ -24,52 +24,52 @@ import com.hardcoregeek.demo.service.SurveyServiceImpl;
  */
 public class SurveyController {
 
-    private final SurveyService surveyService;
+  private final SurveyService surveyService;
 
-    @Autowired
-    public SurveyController(SurveyService surveyService) {
-        this.surveyService = surveyService;
-    }
+  @Autowired
+  public SurveyController(SurveyService surveyService) {
+    this.surveyService = surveyService;
+  }
 
-    @GetMapping
-    public String index(Model model) {
+  @GetMapping
+  public String index(Model model) {
 
-        //hands-on
+    //hands-on
 
-        return "survey/index";
-    }
+    return "survey/index";
+  }
 
-    @GetMapping("/form")
-    public String form(/*Add parameters.*/) {
+  @GetMapping("/form")
+  public String form(/*Add parameters.*/) {
 
-        //hands-on
+    //hands-on
 
-        return "survey/form";
-    }
+    return "survey/form";
+  }
 
-    @PostMapping("/form")
-    public String form(SurveyForm surveyForm, Model model) {
+  @PostMapping("/form")
+  public String form(SurveyForm surveyForm, Model model) {
 
-        //hands-on
+    //hands-on
 
-        return "survey/form";
-    }
+    return "survey/form";
+  }
 
 
-    @PostMapping("/confirm")
-    public String confirm(/*Add parameters.*/) {
+  @PostMapping("/confirm")
+  public String confirm(/*Add parameters.*/) {
 
-        //hands-on
+    //hands-on
 
-        return "survey/confirm";
-    }
+    return "survey/confirm";
+  }
 
-    @PostMapping("/complete")
-    public String complete(/*Add parameters.*/) {
+  @PostMapping("/complete")
+  public String complete(/*Add parameters.*/) {
 
-        //hands-on
+    //hands-on
 
-        return "";
-    }
+    return "";
+  }
 
 }

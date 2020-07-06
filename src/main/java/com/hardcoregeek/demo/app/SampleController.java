@@ -16,22 +16,22 @@ import java.util.Map;
 @RequestMapping("/sample")
 public class SampleController {
 
-    private final JdbcTemplate jdbcTemplate;
+  private final JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    public SampleController(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+  @Autowired
+  public SampleController(JdbcTemplate jdbcTemplate) {
+    this.jdbcTemplate = jdbcTemplate;
+  }
 
-    @GetMapping("/test")
-    public String test(Model model) {
+  @GetMapping("/test")
+  public String test(Model model) {
 
-        String sql = "Select id, name, email FROM inquiry Where id = 1";
-        Map<String, Object> map = jdbcTemplate.queryForMap(sql);
-        model.addAttribute("title", "Inquiry Form");
-        model.addAttribute("name", map.get("name"));
-        model.addAttribute("email", map.get("email"));
-        return "test";
-    }
+    String sql = "Select id, name, email FROM inquiry Where id = 1";
+    Map<String, Object> map = jdbcTemplate.queryForMap(sql);
+    model.addAttribute("title", "Inquiry Form");
+    model.addAttribute("name", map.get("name"));
+    model.addAttribute("email", map.get("email"));
+    return "test";
+  }
 
 }
