@@ -21,14 +21,13 @@ public class InquiryController {
 
   @GetMapping("/form")
   public String form(InquiryForm inquiryForm, Model model) {
-    model.addAttribute(TITLE_KEY, INQUIRY_FORM);
-    return FORM_PATH;
+    return this.toForm(model);
+
   }
 
   @PostMapping("/form")
   public String formGoBack(InquiryForm inquiryForm, Model model) {
-    model.addAttribute(TITLE_KEY, INQUIRY_FORM);
-    return FORM_PATH;
+    return this.toForm(model);
   }
 
 
@@ -36,11 +35,9 @@ public class InquiryController {
   public String confirm(@Validated InquiryForm inquiryForm,
       BindingResult result, Model model) {
     if (result.hasErrors()) {
-      model.addAttribute(TITLE_KEY, INQUIRY_FORM);
-      return FORM_PATH;
+      this.toForm(model);
     }
-    model.addAttribute(TITLE_KEY, CONFIRM_FORM);
-    return CONFIRM_PATH;
+    return this.toConfirm(model);
   }
 
   @PostMapping("/complete")
@@ -51,6 +48,28 @@ public class InquiryController {
     //redirect
 
     return "";
+  }
+
+  /**
+   * to Inquiry form html file path.
+   *
+   * @param model Model
+   * @return inquiry/form :String
+   */
+  private String toForm(Model model) {
+    model.addAttribute(TITLE_KEY, INQUIRY_FORM);
+    return FORM_PATH;
+  }
+
+  /**
+   * to Confirm form html file path.
+   *
+   * @param model Model
+   * @return inquiry/confirm :String
+   */
+  private String toConfirm(Model model) {
+    model.addAttribute(TITLE_KEY, CONFIRM_FORM);
+    return CONFIRM_PATH;
   }
 
 }
