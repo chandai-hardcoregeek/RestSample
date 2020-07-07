@@ -6,8 +6,8 @@ import com.hardcoregeek.demo.entity.Survey;
 
 public interface SurveyService {
 
-    void save(Survey survey);
+  void save(Survey survey);
 
-    List<Survey> getAll();
+  List<Survey> getAll();
 
 }

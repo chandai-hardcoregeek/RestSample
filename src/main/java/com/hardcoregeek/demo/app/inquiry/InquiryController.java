@@ -1,74 +1,75 @@
 package com.hardcoregeek.demo.app.inquiry;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.hardcoregeek.demo.entity.Inquiry;
-import com.hardcoregeek.demo.service.InquiryNotFoundException;
-import com.hardcoregeek.demo.service.InquiryServiceImpl;
 
-/*
- * Add annotations here
- */
+@Controller
+@RequestMapping("/inquiry")
 public class InquiryController {
 
-// 	private final InquiryServiceImpl inquiryService;
+  private static final String TITLE_KEY = "title";
+  private static final String INQUIRY_FORM = "Inquiry Form";
+  private static final String CONFIRM_FORM = "Confirm Form";
+  private static final String FORM_PATH = "inquiry/form";
+  private static final String CONFIRM_PATH = "inquiry/confirm";
 
-    //Add an annotation here
-// 	public InquiryController(InquiryServiceImpl inquiryService){
-// 		this.inquiryService = inquiryService;
-// 	}
+  @GetMapping("/form")
+  public String form(InquiryForm inquiryForm, Model model) {
+    return this.toForm(model);
 
-    @GetMapping
-    public String index(Model model) {
+  }
 
-        //hands-on
+  @PostMapping("/form")
+  public String formGoBack(InquiryForm inquiryForm, Model model) {
+    return this.toForm(model);
+  }
 
-        return "inquiry/index";
+
+  @PostMapping("/confirm")
+  public String confirm(@Validated InquiryForm inquiryForm,
+      BindingResult result, Model model) {
+    if (result.hasErrors()) {
+      this.toForm(model);
     }
+    return this.toConfirm(model);
+  }
 
-    @GetMapping("/form")
-    public String form(/*Add parameters. */) {
+  @PostMapping("/complete")
+  public String complete(/*Add parameters. */) {
 
-        return "inquiry/form";
-    }
+    //hands-on
 
-    @PostMapping("/form")
-    public String formGoBack(InquiryForm inquiryForm, Model model) {
-        model.addAttribute("title", "InquiryForm");
-        return "inquiry/form";
-    }
+    //redirect
 
+    return "";
+  }
 
-    @PostMapping("/confirm")
-    public String confirm(/*Add parameters. */) {
+  /**
+   * to Inquiry form html file path.
+   *
+   * @param model Model
+   * @return inquiry/form :String
+   */
+  private String toForm(Model model) {
+    model.addAttribute(TITLE_KEY, INQUIRY_FORM);
+    return FORM_PATH;
+  }
 
-        //hands-on
-
-        return "inquiry/confirm";
-    }
-
-    @PostMapping("/complete")
-    public String complete(/*Add parameters. */) {
-
-        //hands-on
-
-        //redirect
-
-        return "";
-    }
+  /**
+   * to Confirm form html file path.
+   *
+   * @param model Model
+   * @return inquiry/confirm :String
+   */
+  private String toConfirm(Model model) {
+    model.addAttribute(TITLE_KEY, CONFIRM_FORM);
+    return CONFIRM_PATH;
+  }
 
 }
