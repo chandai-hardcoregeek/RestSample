@@ -5,8 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -20,7 +22,8 @@ public class InquiryController {
   private static final String CONFIRM_PATH = "inquiry/confirm";
 
   @GetMapping("/form")
-  public String form(InquiryForm inquiryForm, Model model) {
+  public String form(InquiryForm inquiryForm, Model model,
+      @ModelAttribute("complete") String complete) {
     return this.toForm(model);
 
   }
@@ -32,8 +35,7 @@ public class InquiryController {
 
 
   @PostMapping("/confirm")
-  public String confirm(@Validated InquiryForm inquiryForm,
-      BindingResult result, Model model) {
+  public String confirm(@Validated InquiryForm inquiryForm, BindingResult result, Model model) {
     if (result.hasErrors()) {
       this.toForm(model);
     }
@@ -41,13 +43,13 @@ public class InquiryController {
   }
 
   @PostMapping("/complete")
-  public String complete(/*Add parameters. */) {
-
-    //hands-on
-
-    //redirect
-
-    return "";
+  public String complete(@Validated InquiryForm inquiryForm, BindingResult result, Model model,
+      RedirectAttributes redirectAttributes) {
+    if (result.hasErrors()) {
+      return this.toForm(model);
+    }
+    redirectAttributes.addFlashAttribute("complete", "Registerd");
+    return "redirect:/inquiry/form";
   }
 
   /**
