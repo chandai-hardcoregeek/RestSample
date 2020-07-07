@@ -14,30 +14,30 @@ import com.hardcoregeek.demo.entity.Survey;
 @Repository
 public class SurveyDaoImpl implements SurveyDao {
 
-    private final JdbcTemplate jdbcTemplate;
+  private final JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    public SurveyDaoImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+  @Autowired
+  public SurveyDaoImpl(JdbcTemplate jdbcTemplate) {
+    this.jdbcTemplate = jdbcTemplate;
+  }
 
-    @Override
-    public void insertSurvey(Survey survey) {
+  @Override
+  public void insertSurvey(Survey survey) {
 
-        //hands-on
+    //hands-on
 
-    }
+  }
 
-    @Override
-    public List<Survey> getAll() {
-        //make SQL
-        List<Map<String, Object>> resultList = null;
-        List<Survey> list = null;
+  @Override
+  public List<Survey> getAll() {
+    //make SQL
+    List<Map<String, Object>> resultList = null;
+    List<Survey> list = null;
 
-        //Set the data form database into Survey instance
+    //Set the data form database into Survey instance
 
-        return list;
-    }
+    return list;
+  }
 
 
 }

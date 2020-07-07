@@ -13,18 +13,17 @@ import com.hardcoregeek.demo.repository.InquiryDao;
  */
 public class InquiryServiceImpl implements InquiryService {
 
-    private final InquiryDao dao;
+  private final InquiryDao dao;
 
-    @Autowired
-    public InquiryServiceImpl(InquiryDao dao) {
-        this.dao = dao;
-    }
+  @Autowired
+  public InquiryServiceImpl(InquiryDao dao) {
+    this.dao = dao;
+  }
 
-    @Override
-    public void save(Inquiry inquiry) {
-        //hands-on
-    }
-
+  @Override
+  public void save(Inquiry inquiry) {
+    //hands-on
+  }
 
 //  This method is used in the latter chapter
 //	@Override
@@ -36,11 +35,11 @@ public class InquiryServiceImpl implements InquiryService {
 //		}
 //	}
 
-    @Override
-    public List<Inquiry> getAll() {
+  @Override
+  public List<Inquiry> getAll() {
 
-        //hands-on
+    //hands-on
 
-        return null;
-    }
+    return null;
+  }
 }

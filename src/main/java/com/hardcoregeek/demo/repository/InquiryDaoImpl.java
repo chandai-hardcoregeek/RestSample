@@ -17,17 +17,17 @@ import com.hardcoregeek.demo.entity.Inquiry;
  */
 public class InquiryDaoImpl implements InquiryDao {
 
-    private final JdbcTemplate jdbcTemplate;
+  private final JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    public InquiryDaoImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+  @Autowired
+  public InquiryDaoImpl(JdbcTemplate jdbcTemplate) {
+    this.jdbcTemplate = jdbcTemplate;
+  }
 
-    @Override
-    public void insertInquiry(Inquiry inquiry) {
-        //hands-on
-    }
+  @Override
+  public void insertInquiry(Inquiry inquiry) {
+    //hands-on
+  }
 
 //  This method is used in the latter chapter
 //	@Override
@@ -36,18 +36,18 @@ public class InquiryDaoImpl implements InquiryDao {
 //				 inquiry.getName(), inquiry.getEmail(), inquiry.getContents(), inquiry.getId() );
 //	}
 
-    @Override
-    public List<Inquiry> getAll() {
+  @Override
+  public List<Inquiry> getAll() {
 
-        //make SQL
+    //make SQL
 
-        List<Map<String, Object>> resultList = null;
+    List<Map<String, Object>> resultList = null;
 
-        List<Inquiry> list = null;
+    List<Inquiry> list = null;
 
-        //Set the data form database into Inquiry instance
+    //Set the data form database into Inquiry instance
 
-        return list;
-    }
+    return list;
+  }
 
 }
