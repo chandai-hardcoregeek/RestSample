@@ -1,24 +1,25 @@
 package com.hardcoregeek.demo.app.survey;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class SurveyForm {
 
-  /*Add parameters(0~150) 引数を追加(0~150)*/
+  @Min(value = 0, message = "Please input a value greater than 0")
+  @Max(value = 150, message = "Please input a value less than 150")
+  @NotNull
   private int age;
 
-  /*Add parameters(1~5) 引数を追加(1~5)*/
+  @Min(value = 1, message = "Please input a value greater than 1")
+  @Max(value = 5, message = "Please input a value less than 5")
+  @NotNull
   private int satisfaction;
 
-  /*Add parameters(200 characters or less) 引数を追加(200文字以内)*/
-  private String comment;
-
-  public SurveyForm() {
-  }
-
-  public SurveyForm(int age, int satisfaction, String comment) {
-    this.age = age;
-    this.satisfaction = satisfaction;
-    this.comment = comment;
-  }
+  @Size(min = 1, max = 200, message = "Please input 200 characters or less")
+  @NotNull
+  private String comments;
 
   public int getAge() {
     return this.age;
@@ -28,8 +29,19 @@ public class SurveyForm {
     return this.satisfaction;
   }
 
-  public String getComment() {
-    return this.comment;
+  public String getComments() {
+    return this.comments;
   }
 
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public void setSatisfaction(int satisfaction) {
+    this.satisfaction = satisfaction;
+  }
+
+  public void setComments(String comments) {
+    this.comments = comments;
+  }
 }
