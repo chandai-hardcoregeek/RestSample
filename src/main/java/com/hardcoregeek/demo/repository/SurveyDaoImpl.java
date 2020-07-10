@@ -23,19 +23,27 @@ public class SurveyDaoImpl implements SurveyDao {
 
   @Override
   public void insertSurvey(Survey survey) {
-
-    //hands-on
+    jdbcTemplate
+        .update("INSERT INTO survey(age, satisfaction, comments, created) VALUES(?, ?, ?, ?)",
+            survey.getAge(), survey.getSatisfaction(), survey.getComments(), survey.getCreated());
 
   }
 
   @Override
   public List<Survey> getAll() {
-    //make SQL
-    List<Map<String, Object>> resultList = null;
-    List<Survey> list = null;
+    List<Survey> list = new ArrayList<>();
+    String sql = "Select id, age, satisfaction, comments, created From Survey";
 
-    //Set the data form database into Survey instance
-
+    List<Map<String, Object>> results = jdbcTemplate.queryForList(sql);
+    results.forEach(result -> {
+      Survey survey = new Survey();
+      survey.setId((int) result.get("id"));
+      survey.setAge((int) result.get("age"));
+      survey.setSatisfaction((int) result.get("satisfaction"));
+      survey.setComments((String) result.get("comments"));
+      survey.setCreated(((Timestamp) result.get("created")).toLocalDateTime());
+      list.add(survey);
+    });
     return list;
   }
 
