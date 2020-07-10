@@ -1,6 +1,7 @@
 package com.hardcoregeek.demo.app.inquiry;
 
 import com.hardcoregeek.demo.entity.Inquiry;
+import com.hardcoregeek.demo.service.InquiryNotFoundException;
 import com.hardcoregeek.demo.service.InquiryService;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,6 +85,7 @@ public class InquiryController {
     redirectAttributes.addFlashAttribute("complete", "Registered");
     return "redirect:/inquiry/form";
   }
+
 
   /**
    * to Inquiry form html file path.
