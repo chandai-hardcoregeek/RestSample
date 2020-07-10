@@ -19,11 +19,11 @@ public class SurveyServiceImpl implements SurveyService {
 
   @Override
   public void save(Survey survey) {
-    //hands-on
+    this.dao.insertSurvey(survey);
   }
 
   @Override
-  public List<Survey> getAll() {
+  public List<Survey> getAll() throws InquiryNotFoundException {
     if (dao.getAll().isEmpty()) {
       throw new InquiryNotFoundException("SQL error");
     }

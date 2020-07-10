@@ -27,7 +27,7 @@ public class InquiryController {
   private static final String INQUIRY_INDEX = "Inquiry Index";
   private static final String FORM_PATH = "inquiry/form";
   private static final String CONFIRM_PATH = "inquiry/confirm";
-  private static final String INQUIRY_PATH = "inquiry/index";
+  private static final String INDEX_PATH = "inquiry/index";
   private final InquiryService inquiryService;
 
   @Autowired
@@ -41,7 +41,7 @@ public class InquiryController {
     List<Inquiry> list = inquiryService.getAll();
     model.addAttribute(INQUIRY_LIST_KEY, list);
     model.addAttribute(TITLE_KEY, INQUIRY_INDEX);
-    return INQUIRY_PATH;
+    return INDEX_PATH;
   }
 
   @GetMapping("/form")
@@ -60,7 +60,7 @@ public class InquiryController {
   @PostMapping("/confirm")
   public String confirm(@Validated InquiryForm inquiryForm, BindingResult result, Model model) {
     if (result.hasErrors()) {
-      this.toForm(model);
+      return this.toForm(model);
     }
     return this.toConfirm(model);
   }
