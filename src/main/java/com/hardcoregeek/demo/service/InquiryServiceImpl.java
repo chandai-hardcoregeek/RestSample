@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import com.hardcoregeek.demo.entity.Inquiry;
 import com.hardcoregeek.demo.repository.InquiryDao;
 
-/*
- * Add an annotation here
- */
+@Service
 public class InquiryServiceImpl implements InquiryService {
 
   private final InquiryDao dao;
@@ -22,24 +20,12 @@ public class InquiryServiceImpl implements InquiryService {
 
   @Override
   public void save(Inquiry inquiry) {
-    //hands-on
+    dao.insertInquiry(inquiry);
   }
-
-//  This method is used in the latter chapter
-//	@Override
-//	public void update(Inquiry inquiry) {
-//
-//		//return dao.updateInquiry(inquiry);
-//		if(dao.updateInquiry(inquiry) == 0) {
-//			throw new InquiryNotFoundException("can't find the same ID");
-//		}
-//	}
 
   @Override
   public List<Inquiry> getAll() {
+    return dao.getAll();
 
-    //hands-on
-
-    return null;
   }
 }
