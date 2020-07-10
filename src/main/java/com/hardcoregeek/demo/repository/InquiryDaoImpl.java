@@ -12,9 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.hardcoregeek.demo.entity.Inquiry;
 import org.springframework.stereotype.Repository;
 
-/*
- * Add an annotation here
- */
+
 @Repository
 public class InquiryDaoImpl implements InquiryDao {
 
@@ -27,7 +25,7 @@ public class InquiryDaoImpl implements InquiryDao {
 
   @Override
   public void insertInquiry(Inquiry inquiry) {
-    jdbcTemplate.update("INSERT INTO inquiry(name, email, contents, created) VALUES(?,?,?,?)",
+    jdbcTemplate.update("INSERT INTO inquiry(name, email, contents, created) VALUES(?, ?, ?, ?)",
         inquiry.getName(), inquiry.getEmail(), inquiry.getContents(), inquiry.getCreated());
   }
 

@@ -1,5 +1,10 @@
 package com.hardcoregeek.demo.app.inquiry;
 
+import com.hardcoregeek.demo.entity.Inquiry;
+import com.hardcoregeek.demo.service.InquiryService;
+import java.time.LocalDateTime;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,10 +21,28 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class InquiryController {
 
   private static final String TITLE_KEY = "title";
+  private static final String INQUIRY_LIST_KEY = "inquiryList";
   private static final String INQUIRY_FORM = "Inquiry Form";
   private static final String CONFIRM_FORM = "Confirm Form";
+  private static final String INQUIRY_INDEX = "Inquiry Index";
   private static final String FORM_PATH = "inquiry/form";
   private static final String CONFIRM_PATH = "inquiry/confirm";
+  private static final String INQUIRY_PATH = "inquiry/index";
+  private final InquiryService inquiryService;
+
+  @Autowired
+  public InquiryController(InquiryService inquiryService) {
+    this.inquiryService = inquiryService;
+
+  }
+
+  @GetMapping
+  public String index(Model model) {
+    List<Inquiry> list = inquiryService.getAll();
+    model.addAttribute(INQUIRY_LIST_KEY, list);
+    model.addAttribute(TITLE_KEY, INQUIRY_INDEX);
+    return INQUIRY_PATH;
+  }
 
   @GetMapping("/form")
   public String form(InquiryForm inquiryForm, Model model,
@@ -48,7 +71,16 @@ public class InquiryController {
     if (result.hasErrors()) {
       return this.toForm(model);
     }
-    redirectAttributes.addFlashAttribute("complete", "Registerd");
+
+    // save inquiry form data
+    Inquiry inquiry = new Inquiry();
+    inquiry.setName(inquiryForm.getName());
+    inquiry.setEmail(inquiryForm.getEmail());
+    inquiry.setContents(inquiryForm.getContents());
+    inquiry.setCreated(LocalDateTime.now());
+    this.inquiryService.save(inquiry);
+
+    redirectAttributes.addFlashAttribute("complete", "Registered");
     return "redirect:/inquiry/form";
   }
 
