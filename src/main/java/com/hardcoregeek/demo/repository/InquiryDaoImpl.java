@@ -38,7 +38,7 @@ public class InquiryDaoImpl implements InquiryDao {
   @Override
   public List<Inquiry> getAll() {
 
-    String sql = "Select id ,name, contents, created FROM inquiry";
+    String sql = "Select id ,name, email, contents, created FROM inquiry";
     List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
 
     List<Inquiry> list = new ArrayList<>();

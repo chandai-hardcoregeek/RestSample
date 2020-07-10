@@ -1,7 +1,6 @@
 package com.hardcoregeek.demo.app.inquiry;
 
 import com.hardcoregeek.demo.entity.Inquiry;
-import com.hardcoregeek.demo.service.InquiryNotFoundException;
 import com.hardcoregeek.demo.service.InquiryService;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,9 +25,9 @@ public class InquiryController {
   private static final String INQUIRY_FORM = "Inquiry Form";
   private static final String CONFIRM_FORM = "Confirm Form";
   private static final String INQUIRY_INDEX = "Inquiry Index";
-  private static final String FORM_PATH = "inquiry/form";
-  private static final String CONFIRM_PATH = "inquiry/confirm";
-  private static final String INDEX_PATH = "inquiry/index";
+  private static final String FORM_PATH = "inquiry/form_boot";
+  private static final String CONFIRM_PATH = "inquiry/confirm_boot";
+  private static final String INDEX_PATH = "inquiry/index_boot";
   private final InquiryService inquiryService;
 
   @Autowired
