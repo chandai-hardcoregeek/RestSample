@@ -7,18 +7,18 @@ public class Survey {
   private int id;
   private int age;
   private int satisfaction;
-  private String comment;
+  private String comments;
   private LocalDateTime created;
 
   public Survey() {
   }
 
-  public Survey(int id, int age, int satisfaction, String comment, LocalDateTime created) {
+  public Survey(int id, int age, int satisfaction, String comments, LocalDateTime created) {
     super();
     this.id = id;
     this.age = age;
     this.satisfaction = satisfaction;
-    this.comment = comment;
+    this.comments = comments;
     this.created = created;
   }
 
@@ -46,12 +46,12 @@ public class Survey {
     this.satisfaction = satisfaction;
   }
 
-  public String getComment() {
-    return comment;
+  public String getComments() {
+    return comments;
   }
 
-  public void setComment(String comment) {
-    this.comment = comment;
+  public void setComments(String comments) {
+    this.comments = comments;
   }
 
   public LocalDateTime getCreated() {
